@@ -9,6 +9,6 @@ import { Component, Input } from '@angular/core';
 })
 export class ListComponent {
 
-  @Input() users: Array<{ name: string; cif: string; direccion: string }> = [];
+  @Input() users: Array<{ name: string; cif: string; direccion: string, group: string }> = [];
 
 }

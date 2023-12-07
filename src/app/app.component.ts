@@ -13,7 +13,7 @@ import { ListComponent } from './list/list.component';
 })
 export class AppComponent implements OnInit {
 
-  userList: Array<{ name: string; cif: string; direccion: string }> = [];
+  userList: Array<{ name: string; cif: string; direccion: string, group: string }> = [];
 
   onSaveUser(user: any) {
     this.userList.push(user);

@@ -14,14 +14,15 @@ export class FormComponent implements OnInit {
   @Output() saveUser = new EventEmitter();
 
   userFormGroup: FormGroup;
-  group: number[] = [1, 2];
-  selectedGroup: number | undefined;
+
+  groups = ['1', '2'];
 
   constructor(private fb: FormBuilder) {
     this.userFormGroup = this.fb.group({
       name: ['', Validators.required],
       cif: ['', Validators.required],
-      direccion: ['', Validators.required]
+      direccion: ['', Validators.required],
+      group: ['', Validators.required],
     });
   }
   ngOnInit(): void {

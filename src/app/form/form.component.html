@@ -8,6 +8,12 @@
         <div>Dirección</div>
         <input type="text" class="form-control" placeholder="Dirección" formControlName="direccion" required>
         <div>Grupo</div>
+        <select formControlName="group" required>
+            @for (group of groups; track $index) {
+                <option >{{group}}</option>
+            }
+        </select>
+        <div></div>
         <button type="submit">Guardar</button>
     </div>
 </form>

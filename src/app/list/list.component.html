@@ -3,10 +3,9 @@
     <ul>
       @for (user of users; track $index) {
         <li>
-          Nombre: {{ user.name }}, CIF: {{ user.cif }}, Dirección: {{ user.direccion }}
+          Nombre: {{ user.name }}, CIF: {{ user.cif }}, Dirección: {{ user.direccion }}, Grupo: {{user.group}}
           </li>
       }
-
     </ul>
 </div>
 
