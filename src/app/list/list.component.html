@@ -1,0 +1,12 @@
+<div>
+    <h2>Lista de Clientes</h2>
+    <ul>
+      @for (user of users; track $index) {
+        <li>
+          Nombre: {{ user.name }}, CIF: {{ user.cif }}, Dirección: {{ user.direccion }}
+          </li>
+      }
+
+    </ul>
+</div>
+
