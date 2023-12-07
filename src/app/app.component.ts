@@ -7,21 +7,18 @@ import { ListComponent } from './list/list.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormComponent, ListComponent],
+  imports: [RouterOutlet, ListComponent, FormComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  userList: Array<{ name: string; cif: string; direccion: string;}> = [];
-  private formBuilder: FormBuilder;
 
-  constructor(formBuilder: FormBuilder) {
-    this.formBuilder = formBuilder;
+  userList: Array<{ name: string; cif: string; direccion: string }> = [];
+
+  onSaveUser(user: any) {
+    this.userList.push(user);
   }
 
-  onSaveUser(user: { name: string; cif: string; direccion: string;}) {
-      this.userList.push(user);
+  ngOnInit(): void {
   }
-
-  ngOnInit(): void {}
 }

@@ -11,7 +11,4 @@ export class ListComponent {
 
   @Input() users: Array<{ name: string; cif: string; direccion: string }> = [];
 
-  ngOnInit(): void {
-
-  }
 }

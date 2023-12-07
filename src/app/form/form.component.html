@@ -1,13 +1,13 @@
-<form action="">
-    <h2>Formulario de Clientes</h2>
+<form (ngSubmit)="save()" [formGroup]="userFormGroup" novalidate>
+    <h2>Alta</h2>
     <div class="container">
         <div>Nombre</div>
-        <input type="text" placeholder="Nombre" name="nombre" [(ngModel)]="user.name"  required>
+        <input type="text" class="form-control" placeholder="Nombre" formControlName="name" required>
         <div>CIF</div>
-        <input type="text" placeholder="CIF" name="cif" [(ngModel)]="user.cif" required>
+        <input type="text" class="form-control" placeholder="CIF" formControlName="cif" required>
         <div>Dirección</div>
-        <input type="text" placeholder="Dirección" name="direccion" [(ngModel)]="user.direccion" required>
+        <input type="text" class="form-control" placeholder="Dirección" formControlName="direccion" required>
         <div>Grupo</div>
-        <button (click)="save()">Guardar</button>
+        <button type="submit">Guardar</button>
     </div>
 </form>

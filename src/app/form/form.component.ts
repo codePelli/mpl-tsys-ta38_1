@@ -1,44 +1,37 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormsModule, NgModel } from '@angular/forms';
+import { FormBuilder, FormsModule, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [FormsModule, RouterOutlet],
+  imports: [FormsModule, RouterOutlet, ReactiveFormsModule],
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
 
-  @Input() user: { name: string; cif: string; direccion: string } = {
-    name: 'd',
-    cif: 'f',
-    direccion: 'b'
-  };
   @Output() saveUser = new EventEmitter();
 
-  nameControl: any;
-  cifControl: any;
-  direccionControl: any;
-  userFormGroup: any;
+  userFormGroup: FormGroup;
+  group: number[] = [1, 2];
+  selectedGroup: number | undefined;
 
-  constructor(private fb: FormBuilder) {}
-
-  ngOnInit(): void {
-    this.nameControl = this.user.name;
-    this.cifControl = this.user.cif;
-    this.direccionControl = this.user.direccion;
-
+  constructor(private fb: FormBuilder) {
     this.userFormGroup = this.fb.group({
-      name: this.nameControl,
-      cif: this.cifControl,
-      direccion: this.direccionControl,
+      name: ['', Validators.required],
+      cif: ['', Validators.required],
+      direccion: ['', Validators.required]
     });
+  }
+  ngOnInit(): void {
+    console.log(this.userFormGroup);
   }
 
   save(): void {
-    this.saveUser.emit(this.userFormGroup);
-    console.log(this.userFormGroup);
+    if (this.userFormGroup.valid) {
+      this.saveUser.emit(this.userFormGroup.value);
+      this.userFormGroup.reset();
+    }
   }
 }
